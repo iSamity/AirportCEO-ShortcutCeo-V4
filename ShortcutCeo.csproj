@@ -43,7 +43,7 @@
       <HintPath>libs\AirportCEOModLoader.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>libs\Assembly-CSharp.dll</HintPath>
+      <HintPath>libs\Assembly-CSharp-publicized.dll</HintPath>
     </Reference>
   </ItemGroup>
   
