@@ -45,41 +45,41 @@ internal class GameConfig
 
     internal static void SetupConfig()
     {
-        CameraUp = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.move-camera-up"), new KeyboardShortcut(GameSettingManager.CameraUp), SetupAdvancedConfigDescription());
-        CameraLeft = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.move-camera-left"), new KeyboardShortcut(GameSettingManager.CameraLeft), SetupAdvancedConfigDescription());
-        CameraDown = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.move-camera-down"), new KeyboardShortcut(GameSettingManager.CameraDown), SetupAdvancedConfigDescription());
-        CameraRight = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.move-camera-right"), new KeyboardShortcut(GameSettingManager.CameraRight), SetupAdvancedConfigDescription());
+        CameraUp = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.move-camera-up"), new KeyboardShortcut(GameSettingManager.CameraUp), SetupAdvancedConfigDescription(1));
+        CameraLeft = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.move-camera-left"), new KeyboardShortcut(GameSettingManager.CameraLeft), SetupAdvancedConfigDescription(2));
+        CameraDown = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.move-camera-down"), new KeyboardShortcut(GameSettingManager.CameraDown), SetupAdvancedConfigDescription(3));
+        CameraRight = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.move-camera-right"), new KeyboardShortcut(GameSettingManager.CameraRight), SetupAdvancedConfigDescription(4));
 
 
-        Rotate = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.rotate"), new KeyboardShortcut(GameSettingManager.Rotate), SetupAdvancedConfigDescription());
-        RotateRight = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.rotate-right"), new KeyboardShortcut(GameSettingManager.RotateRight), SetupAdvancedConfigDescription());
-        RotateLeft = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.rotate-left"), new KeyboardShortcut(GameSettingManager.RotateLeft), SetupAdvancedConfigDescription());
+        Rotate = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.rotate"), new KeyboardShortcut(GameSettingManager.Rotate), SetupAdvancedConfigDescription(5));
+        RotateRight = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.rotate-right"), new KeyboardShortcut(GameSettingManager.RotateRight), SetupAdvancedConfigDescription(6));
+        RotateLeft = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.rotate-left"), new KeyboardShortcut(GameSettingManager.RotateLeft), SetupAdvancedConfigDescription(7));
 
-        ZoomIn = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.zoom-in"), new KeyboardShortcut(GameSettingManager.ZoomIn), SetupAdvancedConfigDescription());
-        ZoomOut = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.zoom-out"), new KeyboardShortcut(GameSettingManager.ZoomOut), SetupAdvancedConfigDescription());
+        ZoomIn = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.zoom-in"), new KeyboardShortcut(GameSettingManager.ZoomIn), SetupAdvancedConfigDescription(8));
+        ZoomOut = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.zoom-out"), new KeyboardShortcut(GameSettingManager.ZoomOut), SetupAdvancedConfigDescription(9));
 
-        Pause = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.pause"), new KeyboardShortcut(GameSettingManager.Pause), SetupAdvancedConfigDescription());
-        NormalTime = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.normal-time"), new KeyboardShortcut(GameSettingManager.NormalTime), SetupAdvancedConfigDescription());
-        DoubleTime = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.double-time"), new KeyboardShortcut(GameSettingManager.DoubleTime), SetupAdvancedConfigDescription());
-        TripleTime = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.triple-time"), new KeyboardShortcut(GameSettingManager.TripleTime), SetupAdvancedConfigDescription());
-        HalfTime = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.half-time"), new KeyboardShortcut(GameSettingManager.HalfTime), SetupAdvancedConfigDescription());
+        Pause = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.pause"), new KeyboardShortcut(GameSettingManager.Pause), SetupAdvancedConfigDescription(10));
+        NormalTime = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.normal-time"), new KeyboardShortcut(GameSettingManager.NormalTime), SetupAdvancedConfigDescription(11));
+        DoubleTime = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.double-time"), new KeyboardShortcut(GameSettingManager.DoubleTime), SetupAdvancedConfigDescription(12));
+        TripleTime = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.triple-time"), new KeyboardShortcut(GameSettingManager.TripleTime), SetupAdvancedConfigDescription(13));
+        HalfTime = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.half-time"), new KeyboardShortcut(GameSettingManager.HalfTime), SetupAdvancedConfigDescription(14));
 
-        ToggleManagementPanel = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.toggle-management-panel"), new KeyboardShortcut(GameSettingManager.ToggleManagementPanel), SetupAdvancedConfigDescription());
-        ToggleFlightPlanner = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.toggle-flight-planner"), new KeyboardShortcut(GameSettingManager.ToggleFlightPlanner), SetupAdvancedConfigDescription());
-        ToggleFlightProcess = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.toggle-flight-process"), new KeyboardShortcut(GameSettingManager.ToggleFlightProcess), SetupAdvancedConfigDescription());
-        ToggleZones = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.toggle-zones"), new KeyboardShortcut(GameSettingManager.ToggleZones), SetupAdvancedConfigDescription());
-        ToggleRooms = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.toggle-rooms"), new KeyboardShortcut(GameSettingManager.ToggleRooms), SetupAdvancedConfigDescription());
-        ToggleTaxiways = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.toggle-taxiways"), new KeyboardShortcut(GameSettingManager.ToggleTaxiways), SetupAdvancedConfigDescription());
-        ToggleQueues = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.toggle-queues"), new KeyboardShortcut(GameSettingManager.ToggleQueues), SetupAdvancedConfigDescription());
-        ToggleBaggage = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.toggle-baggage"), new KeyboardShortcut(GameSettingManager.ToggleBaggage), SetupAdvancedConfigDescription());
-        ToggleBulldozer = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.toggle-bulldozer"), new KeyboardShortcut(GameSettingManager.ToggleBulldozer), SetupAdvancedConfigDescription());
-        ToggleFrontTutorialPanel = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.toggle-front-tutorial-panel"), new KeyboardShortcut(GameSettingManager.ToggleFrontTutorialPanel), SetupAdvancedConfigDescription());
-        TogglePlanning = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("generic.key.2"), new KeyboardShortcut(GameSettingManager.TogglePlanning), SetupAdvancedConfigDescription());
+        ToggleManagementPanel = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.toggle-management-panel"), new KeyboardShortcut(GameSettingManager.ToggleManagementPanel), SetupAdvancedConfigDescription(15));
+        ToggleFlightPlanner = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.toggle-flight-planner"), new KeyboardShortcut(GameSettingManager.ToggleFlightPlanner), SetupAdvancedConfigDescription(16));
+        ToggleFlightProcess = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.toggle-flight-process"), new KeyboardShortcut(GameSettingManager.ToggleFlightProcess), SetupAdvancedConfigDescription(17));
+        ToggleZones = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.toggle-zones"), new KeyboardShortcut(GameSettingManager.ToggleZones), SetupAdvancedConfigDescription(18));
+        ToggleRooms = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.toggle-rooms"), new KeyboardShortcut(GameSettingManager.ToggleRooms), SetupAdvancedConfigDescription(19));
+        ToggleTaxiways = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.toggle-taxiways"), new KeyboardShortcut(GameSettingManager.ToggleTaxiways), SetupAdvancedConfigDescription(20));
+        ToggleQueues = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.toggle-queues"), new KeyboardShortcut(GameSettingManager.ToggleQueues), SetupAdvancedConfigDescription(21));
+        ToggleBaggage = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.toggle-baggage"), new KeyboardShortcut(GameSettingManager.ToggleBaggage), SetupAdvancedConfigDescription(22));
+        ToggleBulldozer = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.toggle-bulldozer"), new KeyboardShortcut(GameSettingManager.ToggleBulldozer), SetupAdvancedConfigDescription(23));
+        ToggleFrontTutorialPanel = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.toggle-front-tutorial-panel"), new KeyboardShortcut(GameSettingManager.ToggleFrontTutorialPanel), SetupAdvancedConfigDescription(24));
+        TogglePlanning = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("generic.key.2"), new KeyboardShortcut(GameSettingManager.TogglePlanning), SetupAdvancedConfigDescription(25));
 
-        ToggleTerminals = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("interaction-panel.key.toggle-terminals"), new KeyboardShortcut(GameSettingManager.ToggleTerminals));
+        ToggleTerminals = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("interaction-panel.key.toggle-terminals"), new KeyboardShortcut(GameSettingManager.ToggleTerminals), new ConfigDescription("", null, new ConfigurationManagerAttributes { Order = 26 }));
 
-        FloorUp = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.floor-up"), new KeyboardShortcut(GameSettingManager.FloorUp), SetupAdvancedConfigDescription());
-        FloorDown = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.floor-down"), new KeyboardShortcut(GameSettingManager.FloorDown), SetupAdvancedConfigDescription());
+        FloorUp = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.floor-up"), new KeyboardShortcut(GameSettingManager.FloorUp), SetupAdvancedConfigDescription(27));
+        FloorDown = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.floor-down"), new KeyboardShortcut(GameSettingManager.FloorDown), SetupAdvancedConfigDescription(28));
 
 
         CameraUp.SettingChanged += SettingChanged;
@@ -287,9 +287,9 @@ internal class GameConfig
         GameSettingManager.FloorDown = FloorDown.Value.MainKey;
     }
 
-    private static ConfigDescription SetupAdvancedConfigDescription()
+    private static ConfigDescription SetupAdvancedConfigDescription(int order)
     {
-        return new ConfigDescription("", null, new ConfigurationManagerAttributes {IsAdvanced = true });
+        return new ConfigDescription("", null, new ConfigurationManagerAttributes { IsAdvanced = true, Order = order });
     }
 
     static ConfigFile ConfigReference => ShortcutCeo.Plugin.ConfigReference;
