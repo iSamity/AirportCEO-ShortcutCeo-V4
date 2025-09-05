@@ -192,29 +192,66 @@ internal class GameConfig
         FloorDown.Value = new KeyboardShortcut(GameSettingManager.FloorDown);
     }
 
+    internal static ConfigEntry<KeyboardShortcut> ToKeyboardShortcut(string keyIdentifier) => keyIdentifier switch
+    {
+        "cameraUp" => CameraUp,
+        "cameraLeft" => CameraLeft,
+        "cameraDown" => CameraDown,
+        "cameraRight" => CameraRight,
+
+
+        "rotate" => Rotate,
+        "rotateRight" => RotateRight,
+        "rotateLeft" => RotateLeft,
+
+        "zoomIn" => ZoomIn,
+        "zoomOut" => ZoomOut,
+
+        "pause" => Pause,
+        "normalTime" => NormalTime,
+        "doubleTime" => DoubleTime,
+        "tripleTime" => TripleTime,
+        "halfTime" => HalfTime,
+
+        "toggleManagementPanel" => ToggleManagementPanel,
+        "toggleFlightPlanner" => ToggleFlightPlanner,
+        "toggleFlightProcess" => ToggleFlightProcess,
+        "toggleZones" => ToggleZones,
+        "toggleRooms" => ToggleRooms,
+        "toggleTaxiways" => ToggleTaxiways,
+        "toggleQueues" => ToggleQueues,
+        "toggleBaggage" => ToggleBaggage,
+        "toggleBulldozer" => ToggleBulldozer,
+        "toggleFrontTutorialPanel" => ToggleFrontTutorialPanel,
+        "planningMode" => TogglePlanning,
+        "floorUp" => FloorUp,
+        "floorDown" => FloorDown,
+        _ => throw new ArgumentOutOfRangeException($"Not expected direction value: {keyIdentifier}"),
+    };
+
     private static void SettingChanged(object sender, EventArgs e, ConfigEntry<KeyboardShortcut> existingConfig)
     {
         if (!(e is SettingChangedEventArgs))
         {
             return;
         }
-        var isShortcutAssigned = ConfigManager.IsKeyAssigned(existingConfig.Value, existingConfig.Definition.Key);
+        var existingKeyboardShortcut = ConfigManager.GetKeyboardShortCut(existingConfig.Value, existingConfig.Definition.Key);
 
-        if (isShortcutAssigned)
+        if (existingKeyboardShortcut == null)
         {
-            DialogUtils.QueueDialog(LocalizationManager.GetLocalizedValue("input.key.already-assigned-message"));
-            try
-            {
-                existingConfig.Value = (KeyboardShortcut)existingConfig.DefaultValue;
-            }
-            catch (Exception ex)
-            {
-                Plugin.Logger.LogError("Failed to revert shortcut: " + ExceptionUtils.ProccessException(ex));
-            }
+            SyncConfigWithGame();
             return;
         }
 
-        SyncConfigWithGame();
+        DialogUtils.QueueDialog($"Key {existingConfig.Value} is already in used for {existingKeyboardShortcut.Definition.Key}");
+        try
+        {
+            existingConfig.Value = KeyboardShortcut.Empty;
+        }
+        catch (Exception ex)
+        {
+            Plugin.Logger.LogError("Failed to revert shortcut: " + ExceptionUtils.ProccessException(ex));
+        }
     }
 
     private static void SyncConfigWithGame()
@@ -253,6 +290,8 @@ internal class GameConfig
 
         GameSettingManager.FloorUp = FloorUp.Value.MainKey;
         GameSettingManager.FloorDown = FloorDown.Value.MainKey;
+
+        Singleton<ControlSettingPanel>.Instance.SetAllKeybindTexts();
     }
 
     private static ConfigDescription SetupAdvancedConfigDescription(int order)
