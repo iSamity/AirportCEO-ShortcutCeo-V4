@@ -2,8 +2,6 @@
 using BepInEx.Configuration;
 using ShortcutCeo.libs;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace ShortcutCeo.config;
 
@@ -82,34 +80,34 @@ internal class GameConfig
         FloorDown = ConfigReference.Bind("General", LocalizationManager.GetLocalizedValue("input.key.floor-down"), new KeyboardShortcut(GameSettingManager.FloorDown), SetupAdvancedConfigDescription(28));
 
 
-        CameraUp.SettingChanged += SettingChanged;
-        CameraLeft.SettingChanged += SettingChanged;
-        CameraDown.SettingChanged += SettingChanged;
-        CameraRight.SettingChanged += SettingChanged;
-        Rotate.SettingChanged += SettingChanged;
-        RotateRight.SettingChanged += SettingChanged;
-        RotateLeft.SettingChanged += SettingChanged;
-        ZoomIn.SettingChanged += SettingChanged;
-        ZoomOut.SettingChanged += SettingChanged;
-        Pause.SettingChanged += SettingChanged;
-        NormalTime.SettingChanged += SettingChanged;
-        DoubleTime.SettingChanged += SettingChanged;
-        TripleTime.SettingChanged += SettingChanged;
-        HalfTime.SettingChanged += SettingChanged;
-        ToggleManagementPanel.SettingChanged += SettingChanged;
-        ToggleFlightPlanner.SettingChanged += SettingChanged;
-        ToggleFlightProcess.SettingChanged += SettingChanged;
-        ToggleZones.SettingChanged += SettingChanged;
-        ToggleRooms.SettingChanged += SettingChanged;
-        ToggleTaxiways.SettingChanged += SettingChanged;
-        ToggleQueues.SettingChanged += SettingChanged;
-        ToggleBaggage.SettingChanged += SettingChanged;
-        ToggleBulldozer.SettingChanged += SettingChanged;
-        ToggleFrontTutorialPanel.SettingChanged += SettingChanged;
-        TogglePlanning.SettingChanged += SettingChanged;
-        ToggleTerminals.SettingChanged += SettingChanged;
-        FloorUp.SettingChanged += SettingChanged;
-        FloorDown.SettingChanged += SettingChanged;
+        CameraUp.SettingChanged += (s, e) => SettingChanged(s, e, CameraUp);
+        CameraLeft.SettingChanged += (s, e) => SettingChanged(s, e, CameraLeft);
+        CameraDown.SettingChanged += (s, e) => SettingChanged(s, e, CameraDown);
+        CameraRight.SettingChanged += (s, e) => SettingChanged(s, e, CameraRight);
+        Rotate.SettingChanged += (s, e) => SettingChanged(s, e, Rotate);
+        RotateRight.SettingChanged += (s, e) => SettingChanged(s, e, RotateRight);
+        RotateLeft.SettingChanged += (s, e) => SettingChanged(s, e, RotateLeft);
+        ZoomIn.SettingChanged += (s, e) => SettingChanged(s, e, ZoomIn);
+        ZoomOut.SettingChanged += (s, e) => SettingChanged(s, e, ZoomOut);
+        Pause.SettingChanged += (s, e) => SettingChanged(s, e, Pause);
+        NormalTime.SettingChanged += (s, e) => SettingChanged(s, e, NormalTime);
+        DoubleTime.SettingChanged += (s, e) => SettingChanged(s, e, DoubleTime);
+        TripleTime.SettingChanged += (s, e) => SettingChanged(s, e, TripleTime);
+        HalfTime.SettingChanged += (s, e) => SettingChanged(s, e, HalfTime);
+        ToggleManagementPanel.SettingChanged += (s, e) => SettingChanged(s, e, ToggleManagementPanel);
+        ToggleFlightPlanner.SettingChanged += (s, e) => SettingChanged(s, e, ToggleFlightPlanner);
+        ToggleFlightProcess.SettingChanged += (s, e) => SettingChanged(s, e, ToggleFlightProcess);
+        ToggleZones.SettingChanged += (s, e) => SettingChanged(s, e, ToggleZones);
+        ToggleRooms.SettingChanged += (s, e) => SettingChanged(s, e, ToggleRooms);
+        ToggleTaxiways.SettingChanged += (s, e) => SettingChanged(s, e, ToggleTaxiways);
+        ToggleQueues.SettingChanged += (s, e) => SettingChanged(s, e, ToggleQueues);
+        ToggleBaggage.SettingChanged += (s, e) => SettingChanged(s, e, ToggleBaggage);
+        ToggleBulldozer.SettingChanged += (s, e) => SettingChanged(s, e, ToggleBulldozer);
+        ToggleFrontTutorialPanel.SettingChanged += (s, e) => SettingChanged(s, e, ToggleFrontTutorialPanel);
+        TogglePlanning.SettingChanged += (s, e) => SettingChanged(s, e, TogglePlanning);
+        ToggleTerminals.SettingChanged += (s, e) => SettingChanged(s, e, ToggleTerminals);
+        FloorUp.SettingChanged += (s, e) => SettingChanged(s, e, FloorUp);
+        FloorDown.SettingChanged += (s, e) => SettingChanged(s, e, FloorDown);
 
 
         try
@@ -194,59 +192,29 @@ internal class GameConfig
         FloorDown.Value = new KeyboardShortcut(GameSettingManager.FloorDown);
     }
 
-    private static void SettingChanged(object sender, EventArgs e)
+    private static void SettingChanged(object sender, EventArgs e, ConfigEntry<KeyboardShortcut> existingConfig)
     {
-        if (e is SettingChangedEventArgs settingChangedArgs)
+        if (!(e is SettingChangedEventArgs))
         {
-            var x = new List<ConfigEntry<KeyboardShortcut>> {
-                CameraUp,
-                CameraLeft,
-                CameraDown,
-                CameraRight,
-
-
-                Rotate,
-                RotateRight,
-                RotateLeft,
-
-                ZoomIn,
-                ZoomOut,
-
-                Pause,
-                NormalTime,
-                DoubleTime,
-                TripleTime,
-                HalfTime,
-
-                ToggleManagementPanel,
-                ToggleFlightPlanner,
-                ToggleFlightProcess,
-                ToggleZones,
-                ToggleRooms,
-                ToggleTaxiways,
-                ToggleQueues,
-                ToggleBaggage,
-                ToggleBulldozer,
-                ToggleFrontTutorialPanel,
-                TogglePlanning,
-                ToggleTerminals,
-                FloorUp,
-                FloorDown,
-            };
-
-            var hasKeyAssigned = x.Find(y => ConfigManager.IsKeyAssigned(y.Value.MainKey));
-
-            if(hasKeyAssigned != null)
-            {
-                DialogUtils.QueueDialog(LocalizationManager.GetLocalizedValue("input.key.already-assigned-message"));
-                // settingChangedArgs.ChangedSetting.Definition.Key
-                // TODO: Revert to previous value
-                hasKeyAssigned.Value = KeyboardShortcut.Empty;
-                return;
-            }
-
-            SyncConfigWithGame();
+            return;
         }
+        var isShortcutAssigned = ConfigManager.IsKeyAssigned(existingConfig.Value, existingConfig.Definition.Key);
+
+        if (isShortcutAssigned)
+        {
+            DialogUtils.QueueDialog(LocalizationManager.GetLocalizedValue("input.key.already-assigned-message"));
+            try
+            {
+                existingConfig.Value = (KeyboardShortcut)existingConfig.DefaultValue;
+            }
+            catch (Exception ex)
+            {
+                Plugin.Logger.LogError("Failed to revert shortcut: " + ExceptionUtils.ProccessException(ex));
+            }
+            return;
+        }
+
+        SyncConfigWithGame();
     }
 
     private static void SyncConfigWithGame()
