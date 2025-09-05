@@ -1,0 +1,15 @@
+[h3]Note[/h3]
+This mod requires the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3109136766]AirportCEO Mod Loader[/url] to function. Please make sure to have it correctly downloaded and installed!
+
+[h3]Description[/h3]
+A code mod that handles setting keyboard / mouse shortcuts for the game. Comes with a default set of shortcuts for the game. Press f1 in game to change the shortcuts.
+
+Change keyboard shortcut for:
+- Toggle terminal (default T)
+- Item picker below mouse (default CTRL + C)
+	- 1.2.0+ fixes not getting the service road when trying to pick
+
+But other developers can add their own shortcuts to the mod and it will check conflicts and warn the user if they are trying to set a shortcut that is already in use.
+
+[h3]Developers[/h3]
+Read more on [url="https://github.com/iSamity/AirportCEO-ShortcutCeo-V4"]Github[/url] page on how to integrate your plugin with this one.
