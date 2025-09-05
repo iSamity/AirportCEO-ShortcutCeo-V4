@@ -22,7 +22,7 @@ public class ConfigManager
 
     public static void AddShortcut(ConfigEntry<KeyboardShortcut> shortcut, Action? action = null)
     {
-        var existingShortcut = GetShortcutConfig(shortcut.Value);
+        var existingShortcut = GetKeyboardShortCut(shortcut.Value);
         if (existingShortcut != null)
         {
             DialogUtils.QueueDialog($"Shortcut {existingShortcut.Value} already exists for: {existingShortcut.Definition.Key}");
@@ -35,7 +35,7 @@ public class ConfigManager
 
     public static void RemoveShortcut(ConfigEntry<KeyboardShortcut> shortcut)
     {
-        if (GetShortcutConfig(shortcut.Value) == null)
+        if (IsKeyAssigned(shortcut.Value))
         {
             Plugin.Logger.LogInfo($"Shortcut {shortcut.Value} does not exist.");
             return;
@@ -45,49 +45,41 @@ public class ConfigManager
         Plugin.Logger.LogInfo($"Shortcut {shortcut.Value} is removed.");
     }
 
-    private static ConfigEntry<KeyboardShortcut>? GetShortcutConfig(KeyboardShortcut shortcut)
-    {
-        foreach (var kvp in shortcutDictionary)
-        {
-            if (kvp.Key.Value.Equals(shortcut))
-            {
-                return kvp.Key;
-            }
-        }
-        return null;
-    }
-
     internal static IEnumerable<KeyValuePair<ConfigEntry<KeyboardShortcut>, Action?>> GetShortcuts()
     {
         return shortcutDictionary;
     }
 
-    internal static bool IsKeyAssigned(KeyCode k)
+    internal static bool IsKeyAssigned(KeyCode k, string? ignoreKey = null)
     {
         var shortcut = GetKeyboardShortCut(k);
         return shortcut != null;
     }
 
-    internal static bool IsKeyAssigned(KeyboardShortcut k)
+    internal static bool IsKeyAssigned(KeyboardShortcut k, string? ignoreKey = null)
     {
         var shortcut = GetKeyboardShortCut(k);
         return shortcut != null;
     }
 
-    internal static ConfigEntry<KeyboardShortcut>? GetKeyboardShortCut(KeyCode k)
+    internal static ConfigEntry<KeyboardShortcut>? GetKeyboardShortCut(KeyCode k, string? ignoreKey = null)
     {
         var shortcuts = GetShortcuts();
 
-        var kvpShortcut = shortcuts.FirstOrDefault(s => s.Key.Value.MainKey == k);
+        var kvpShortcut = shortcuts
+            .Where(s => s.Key.Definition.Key != ignoreKey)
+            .FirstOrDefault(s => s.Key.Value.MainKey == k);
 
         return kvpShortcut.Key;
     }
 
-     internal static ConfigEntry<KeyboardShortcut>? GetKeyboardShortCut(KeyboardShortcut k)
+     internal static ConfigEntry<KeyboardShortcut>? GetKeyboardShortCut(KeyboardShortcut k, string? ignoreKey = null)
     {
         var shortcuts = GetShortcuts(); 
 
-        var kvpShortcut = shortcuts.FirstOrDefault(s => s.Key.Value.Equals(k));
+        var kvpShortcut = shortcuts
+            .Where(s => s.Key.Definition.Key != ignoreKey)
+            .FirstOrDefault(s => s.Key.Value.Equals(k));
 
         return kvpShortcut.Key;
     }
