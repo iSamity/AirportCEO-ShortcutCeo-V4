@@ -7,9 +7,12 @@ A code mod that handles setting keyboard / mouse shortcuts for the game. Comes w
 Change keyboard shortcut for:
 - Toggle terminal (default T)
 - Item picker below mouse (default CTRL + C)
-	- 1.1.0+ fixes not getting the service road when trying to pick
 
 But other developers can add their own shortcuts to the mod and it will check conflicts and warn the user if they are trying to set a shortcut that is already in use.
+
+[h3]Features[/h3]
+- Add shortcuts for terminal and item picker below mouse
+- V1.1.0+ fixes not getting the service road when trying to pick
 
 [h3]Developers[/h3]
 Read more on [url="https://github.com/iSamity/AirportCEO-ShortcutCeo-V4"]Github[/url] page on how to integrate your plugin with this one.
