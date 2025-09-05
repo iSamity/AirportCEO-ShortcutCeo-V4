@@ -1,9 +1,8 @@
-﻿using AirportCEOModLoader.Core;
-using HarmonyLib;
+﻿using HarmonyLib;
 using ShortcutCeo.config;
 using UnityEngine;
 
-namespace ShortcutCeo.Patches;
+namespace ShortcutCeo.AutoSyncShortcutSettings;
 
 [HarmonyPatch(typeof(GameSettingManager), nameof(GameSettingManager.IsKeyAssigned))]
 internal class IsKeyAssignedPatch

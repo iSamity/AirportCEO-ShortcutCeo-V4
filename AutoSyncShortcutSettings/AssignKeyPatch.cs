@@ -4,7 +4,7 @@ using HarmonyLib;
 using ShortcutCeo.config;
 using UnityEngine;
 
-namespace ShortcutCeo.Patches;
+namespace ShortcutCeo.AutoSyncShortcutSettings;
 
 [HarmonyPatch(typeof(ControlSettingPanel), nameof(ControlSettingPanel.AssignKey))]
 internal class AssignKeyPatch
