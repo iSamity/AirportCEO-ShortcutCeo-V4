@@ -14,5 +14,10 @@ But other developers can add their own shortcuts to the mod and it will check co
 - Add shortcuts for terminal and item picker below mouse
 - V1.1.0+ fixes not getting the service road when trying to pick
 
+[h3]Version[/h3] read more on [url="https://github.com/iSamity/AirportCEO-ShortcutCeo-V4/releases"]Github[/url]
+- v1.1.1 - Improve null checks
+- v1.1.0 - small improvements and bugfixes
+- v1.0.0 - Initial release
+
 [h3]Developers[/h3]
 Read more on [url="https://github.com/iSamity/AirportCEO-ShortcutCeo-V4"]Github[/url] page on how to integrate your plugin with this one.
