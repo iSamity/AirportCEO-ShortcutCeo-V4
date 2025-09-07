@@ -235,6 +235,7 @@ internal class GameConfig
         {
             return;
         }
+
         var existingKeyboardShortcut = ConfigManager.GetKeyboardShortCut(existingConfig.Value, existingConfig.Definition.Key);
 
         if (existingKeyboardShortcut == null)
@@ -291,7 +292,12 @@ internal class GameConfig
         GameSettingManager.FloorUp = FloorUp.Value.MainKey;
         GameSettingManager.FloorDown = FloorDown.Value.MainKey;
 
-        Singleton<ControlSettingPanel>.Instance.SetAllKeybindTexts();
+        var instance = Singleton<ControlSettingPanel>.instance;
+
+        if (instance)
+        {
+            instance.SetAllKeybindTexts();
+        }
     }
 
     private static ConfigDescription SetupAdvancedConfigDescription(int order)

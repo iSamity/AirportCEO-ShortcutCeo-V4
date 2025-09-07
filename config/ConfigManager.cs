@@ -64,6 +64,11 @@ public class ConfigManager
 
     internal static ConfigEntry<KeyboardShortcut>? GetKeyboardShortCut(KeyCode k, string? ignoreKey = null)
     {
+        if (IsKeyboardShortcutEmpty(k))
+        {
+            return null;
+        }
+
         var shortcuts = GetShortcuts();
 
         var kvpShortcut = shortcuts
@@ -75,6 +80,11 @@ public class ConfigManager
 
      internal static ConfigEntry<KeyboardShortcut>? GetKeyboardShortCut(KeyboardShortcut k, string? ignoreKey = null)
     {
+        if(IsKeyboardShortcutEmpty(k))
+        {
+            return null;
+        }
+
         var shortcuts = GetShortcuts(); 
 
         var kvpShortcut = shortcuts
@@ -82,6 +92,19 @@ public class ConfigManager
             .FirstOrDefault(s => s.Key.Value.Equals(k));
 
         return kvpShortcut.Key;
+    }
+
+    internal static bool IsKeyboardShortcutEmpty(object boxedValue)
+    {
+        if (!(boxedValue is KeyboardShortcut keyboardShortcut))
+        {
+            return false;
+        }
+
+        var hasNoMainKey = keyboardShortcut.MainKey == KeyCode.None;
+        var hasNoModifier = keyboardShortcut.Modifiers.Count() == 0;
+
+        return hasNoMainKey && hasNoModifier;
     }
 
 }
