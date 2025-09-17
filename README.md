@@ -12,7 +12,7 @@ How to start using the plugin:
 2. Reference the dll in your plugin project 
 
 ### Steam
-WIP not yet implemented
+Go to [steam page](https://steamcommunity.com/sharedfiles/filedetails/?id=3560363115) and subscribe there. Don't forget to install the required [AirportCEO Mod Loader](https://steamcommunity.com/sharedfiles/filedetails/?id=3109136766)
 
 ## Dev
 
